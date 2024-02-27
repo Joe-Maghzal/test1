@@ -26,6 +26,9 @@ jobs:
       - name: Set var
         run: echo "NEW_COMMIT_COUNT=$(git log --oneline --since '24 hours ago' | wc -l)"
 
+      - name: print
+        run: echo ${{ env.NEW_COMMIT_COUNT > 0 }}
+
       - name: look for changes
         run: | 
           gh run cancel ${{ github.run_id }}

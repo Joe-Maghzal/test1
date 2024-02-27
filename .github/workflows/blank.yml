@@ -24,7 +24,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Get new commits
-        run: echo "NEW_COMMIT_COUNT=$(git log --oneline --since '24 hours ago' | wc -l)" >> $GITHUB_ENV
+        run: echo "NEW_COMMIT_COUNT=$(git rev-list --count --since '24 hours ago' | wc -l)" >> $GITHUB_ENV
       - name: Run a one-line script
         run: echo Hello, world!
 

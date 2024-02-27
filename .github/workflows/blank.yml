@@ -33,10 +33,9 @@ jobs:
         run: | 
           gh run cancel ${{ github.run_id }}
           gh run watch ${{ github.run_id }}
-        if: ${{ env.NEW_COMMIT_COUNT > 0 }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+        if: ${{(git log --oneline --since '24 hours ago' | wc -l) > 0}}
         
       - name: Run a one-line script
         run: echo Hello, world!

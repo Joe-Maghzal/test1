@@ -35,7 +35,7 @@ jobs:
           gh run watch ${{ github.run_id }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        if: ${{(git log --oneline --since '24 hours ago' | wc -l) > 0}}
+        if: $(git log --oneline --since '24 hours ago' | wc -l) > 0
         
       - name: Run a one-line script
         run: echo Hello, world!

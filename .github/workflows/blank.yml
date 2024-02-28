@@ -3,6 +3,8 @@
 name: CI
 
 # Controls when the workflow will run
+env:
+  COMMIT_COUNT: $(git log --oneline --since '24 hours ago' | wc -l)
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   workflow_dispatch:
@@ -23,8 +25,6 @@ jobs:
       - uses: actions/checkout@v3
 
       # Runs a single command using the runners shell
-      - name: Set var
-        run: echo "COMMIT_COUNT=$(git log --oneline --since '24 hours ago' | wc -l)" >> $GITHUB_ENV
       - name: print
         run: echo $COMMIT_COUNT
 

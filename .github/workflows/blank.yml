@@ -24,18 +24,18 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Set var
-        run: echo "::set-output name=commit_count::$(git log --oneline --since '24 hours ago' | wc -l)"
-
+        run: echo "COMMIT_COUNT=$(git log --oneline --since '24 hours ago' | wc -l)" >> $GITHUB_ENV
       - name: print
-        run: echo $env.NEW_COMMIT_COUNT
+        run: echo $env.COMMIT_COUNT
 
       - name: look for changes
+        if: ${{ env.COMMIT_COUNT > 0 }}
         run: | 
           gh run cancel ${{ github.run_id }}
           gh run watch ${{ github.run_id }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        if: ${{ steps.count-commits.outputs.commit_count > 0 }}
+        
         
       - name: Run a one-line script
         run: echo Hello, world!

@@ -33,7 +33,6 @@ jobs:
       steps:
         
         - uses: actions/checkout@v3
-          if: ${{env.COMMIT_COUNT > 0}}
         - name: Run a one-line script
           run: echo Hello, world!
 
@@ -42,3 +41,4 @@ jobs:
           run: |
             echo Add other actions to build,
             echo test, and deploy your project.
+      if: ${{env.COMMIT_COUNT > 0}}

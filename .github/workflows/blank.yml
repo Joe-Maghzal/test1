@@ -26,7 +26,7 @@ jobs:
       - name: Set var
         run: echo "COMMIT_COUNT=$(git log --oneline --since '24 hours ago' | wc -l)" >> $GITHUB_ENV
       - name: print
-        run: echo env.COMMIT_COUNT
+        run: echo $COMMIT_COUNT
 
       - name: look for changes
         if: ${{ env.COMMIT_COUNT > 0 }}

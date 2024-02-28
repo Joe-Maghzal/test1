@@ -28,7 +28,7 @@ jobs:
           run: echo $COMMIT_COUNT
         - name: exit early
           if: ${{env.COMMIT_COUNT > 0}}
-          run: exit 78
+          run: exit 0
   second-job:
       runs-on: ubuntu-latest
       

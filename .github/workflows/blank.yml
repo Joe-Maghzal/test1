@@ -32,7 +32,7 @@ jobs:
     steps:
         - name : exit
           if: ${{env.COMMIT_COUNT < 1}}
-          run: exit 0
+          run: exit 78
           
         - name: Run a one-line script
           run: echo Hello, world!

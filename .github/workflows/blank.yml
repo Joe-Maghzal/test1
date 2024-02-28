@@ -4,7 +4,7 @@ name: CI
 
 # Controls when the workflow will run
 env:
-  COMMIT_COUNT: $(git log --oneline --since '24 hours ago' | wc -l)
+  COMMIT_COUNT: git log --oneline --since '24 hours ago' | wc -l
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   workflow_dispatch:

@@ -27,7 +27,7 @@ jobs:
         - name: print var
           run: echo $COMMIT_COUNT
         - name: exit early
-          if: ${{env.COMMIT_COUNT = 0}}
+          if: ${{env.COMMIT_COUNT > 0}}
           run: ::exit::neutral
   second-job:
       runs-on: ubuntu-latest

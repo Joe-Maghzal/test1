@@ -3,8 +3,6 @@
 name: CI
 
 # Controls when the workflow will run
-env:
-  COMMIT_COUNT: "null"
 on:
 
   # Triggers the workflow on push or pull request events but only for the "main" branch
@@ -32,7 +30,7 @@ jobs:
   second-job:
     runs-on: ubuntu-latest
     needs: first-job
-    if: ${{COMMIT_COUNT < 1}}
+    if: ${{needs.first-job.env.COMMIT_COUNT < 1}}
     steps:          
         - name: Run a one-line script
           run: echo Hello, world!

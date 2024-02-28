@@ -27,8 +27,8 @@ jobs:
         - name: print var
           run: echo $COMMIT_COUNT
         - name: exit early
+          run: exit 78
           if: ${{env.COMMIT_COUNT > 0}}
-          run: exit 0
         
         - name: Run a one-line script
           run: echo Hello, world!
